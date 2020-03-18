@@ -28,6 +28,7 @@ def video_recover_plots(noisy_pose_dict, recovered_pose_dict, \
 
     gs = GridSpec(2, 2, figure=fig)
     ax1 = fig.add_subplot(gs[:2, 0])
+    import mpl_toolkits.mplot3d.axes3d as p3
     # identical to ax1 = plt.subplot(gs.new_subplotspec((0, 0), colspan=3))
     ax2 = fig.add_subplot(gs[:2, 1], projection = '3d') # https://matplotlib.org/3.1.1/gallery/mplot3d/subplot3d.html
 

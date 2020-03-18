@@ -75,10 +75,42 @@ def arr3d_to_dict(arr):
     dict_3d["z_coords"] = arr[:,[2, 5, 8]].T
     return dict_3d
 
+def revert_ordered_arr_2d_to_dict(body_parts, n_cams, ordered_arr):
+    '''remove from here. in IO'''
+    n_frames = int(ordered_arr.shape[0]/(body_parts*n_cams))
+    coord_list_of_dicts = []
+    
+    for cam in range(n_cams):
+        coord_dict = {}
+        coord_dict["x_coords"] = np.zeros((body_parts, n_frames))
+        coord_dict["y_coords"] = np.zeros((body_parts, n_frames))
+                   
+        curr_cam_arr = ordered_arr[cam*n_frames*body_parts:\
+                                   (cam+1)*n_frames*body_parts]
+#         print(cam*n_frames*body_parts)
+#         print( (cam+1)*n_frames*body_parts)
 
+        for f_ind in range(body_parts):
+            coord_dict["x_coords"][f_ind, :] = curr_cam_arr[f_ind*n_frames:\
+                                                           (f_ind+1)*n_frames, 0]
+            coord_dict["y_coords"][f_ind, :] = curr_cam_arr[f_ind*n_frames:\
+                                                           (f_ind+1)*n_frames, 1]
+        coord_list_of_dicts.append(coord_dict)
+    return coord_list_of_dicts
 
-
-
-
+def revert_ordered_arr_to_dict(body_parts, ordered_arr):
+    n_frames = int(ordered_arr.shape[0]/body_parts)
+    coord_dict = {}
+    coord_dict["x_coords"] = np.zeros((body_parts, n_frames))
+    coord_dict["y_coords"] = np.zeros((body_parts, n_frames))
+    coord_dict["z_coords"] = np.zeros((body_parts, n_frames))
+    for f_ind in range(body_parts):
+        coord_dict["x_coords"][f_ind, :] = ordered_arr[f_ind*n_frames:\
+                                                       (f_ind+1)*n_frames, 0]
+        coord_dict["y_coords"][f_ind, :] = ordered_arr[f_ind*n_frames:\
+                                                       (f_ind+1)*n_frames, 1]
+        coord_dict["z_coords"][f_ind, :] = ordered_arr[f_ind*n_frames:\
+                                                       (f_ind+1)*n_frames, 2]
+    return coord_dict
 
 
