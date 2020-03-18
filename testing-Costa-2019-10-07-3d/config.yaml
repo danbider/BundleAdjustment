@@ -1,0 +1,38 @@
+# Project definitions (do not edit)
+Task: testing
+scorer: Costa
+date: Oct7
+
+# Project path (change when moving around)
+project_path: /Users/danbiderman/Dropbox/Columbia/1.Dan/John/testing-Costa-2019-10-07-3d
+
+# Plotting configuration
+skeleton:     # Note that the pairs must be defined, as you want them linked!
+  - - bodypart1
+    - bodypart2
+  - - bodypart2
+    - bodypart3
+  - - bodypart3
+    - bodypart4
+  - - bodypart4
+    - bodypart5
+skeleton_color: black
+pcutoff: 0.4
+colormap: jet
+dotsize: 15
+alphaValue: 0.8
+markerType: '*'
+markerColor: r
+
+# Number of cameras, camera names, path of the config files, shuffle index and trainingsetindex used to analyze videos:
+num_cameras: 2
+camera_names:
+- camera-1
+- camera-2
+scorername_3d: DLC_3D # Enter the scorer name for the 3D output
+trainingsetindex_camera-1: 0
+trainingsetindex_camera-2: 0
+config_file_camera-1: /home/mackenzie/DEEPLABCUT/DeepLabCut/2DprojectCam1-Mackenzie-2019-06-05/config.yaml
+config_file_camera-2: /home/mackenzie/DEEPLABCUT/DeepLabCut/2DprojectCam2-Mackenzie-2019-06-05/config.yaml
+shuffle_camera-1: 1
+shuffle_camera-2: 1
